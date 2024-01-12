@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
+import { Instance } from './data/instance.model';
+
+type ColumnName = keyof Instance;
 
 @Component({
   selector: 'app-instance',
@@ -9,5 +12,5 @@ import { MatTableModule } from '@angular/material/table';
   styleUrl: './instance.component.scss',
 })
 export class InstanceComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: ColumnName[] = ['id', 'status', 'name', 'region'];
 }
