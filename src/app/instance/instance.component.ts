@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { Instance } from './data/instance.model';
+import { Instance } from './_data/instance.model';
 
 type ColumnName = keyof Instance;
 
