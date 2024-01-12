@@ -1,5 +1,7 @@
 <div class="content">
   <h1 class="mat-h1">Instance list</h1>
+  <app-filters [instanceNames]="(instanceNames$ | async) || []"></app-filters>
+  <br /><br />
   <table class="instance-table" mat-table [dataSource]="instanceListData$">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> Id </th>

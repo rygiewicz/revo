@@ -28,12 +28,21 @@ import { adaptInstanceList } from './instance.adapter';
 export class InstanceService {
   private filterParams$ = new BehaviorSubject(EMPTY_FILTERS);
   private instanceList$: Observable<RequestState<Instance[]>>;
+  private instanceNames$: Observable<string[]>;
 
   constructor() {
     this.instanceList$ = this.filterParams$.pipe(
       distinctUntilChanged(),
       switchMap((params) => {
         return concat(of(RS_LOADING()), this.fetchInstanceList(params));
+      })
+    );
+
+    this.instanceNames$ = this.fetchInstanceList({}).pipe(
+      map((response) => {
+        const nameList = (response.data || []).map((item) => item.name);
+
+        return Array.from(new Set(nameList));
       })
     );
   }
@@ -44,6 +53,10 @@ export class InstanceService {
 
   getInstanceList() {
     return this.instanceList$;
+  }
+
+  getInstanceNames() {
+    return this.instanceNames$;
   }
 
   private fetchInstanceList(

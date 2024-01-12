@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>Instance name</mat-label>
+      <mat-select>
+        @for (name of instanceNames; track name) {
+        <mat-option [value]="name">{{name}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
