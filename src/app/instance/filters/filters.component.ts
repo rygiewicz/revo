@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filters',
@@ -20,4 +21,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class FiltersComponent {
   @Input() instanceNames: string[] = [];
+
+  constructor(private router: Router) {}
+
+  onFilterChange(name: string, value: string) {
+    this.router.navigate([], { queryParams: { [name]: value } });
+  }
 }
