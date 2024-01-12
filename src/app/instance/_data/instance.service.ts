@@ -42,6 +42,10 @@ export class InstanceService {
     this.filterParams$.next(params);
   }
 
+  getInstanceList() {
+    return this.instanceList$;
+  }
+
   private fetchInstanceList(
     params: FilterParams
   ): Observable<RequestState<Instance[]>> {
